@@ -12,7 +12,15 @@ const Header = ({ isLoggedIn, onShowLogin, onShowSignup, onLogout, onShowCart, o
   };
 
   return (
+<<<<<<< Updated upstream
     <Navbar bg="danger" variant="dark" expand="lg" fixed="top">
+=======
+<<<<<<< HEAD
+    <Navbar expand="lg" fixed="top">
+=======
+    <Navbar bg="danger" variant="dark" expand="lg" fixed="top">
+>>>>>>> 8b271ebbec92519329d01698e5d7ef67e6eb3f6f
+>>>>>>> Stashed changes
       <Navbar.Brand as={NavLink} to="/">
         Club Curry
       </Navbar.Brand>
