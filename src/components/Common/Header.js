@@ -26,7 +26,8 @@ const Header = ({ isLoggedIn, onShowLogin, onShowSignup, onLogout, onShowCart, o
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/" end>
-            Home
+            <i className="fas fa-home"></i>
+
           </Nav.Link>
           <Button variant="outline-light" onClick={onShowCart} className="ml-2">
             <i className="fas fa-shopping-cart"></i> Cart

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import BookingModal from '../../Common/BookingModal';
 import ReviewSection from './ReviewSection'; // Import the new component
 import '../../../CSS/HomePage.css';
+import chef from '../../../images/chefs.jpg';
+import food from '../../../images/food.jpg';
 
 // Sample menu items (Replace with real data)
 const sampleMenuItems = [
@@ -36,8 +38,8 @@ function HomePage({ setShowBooking, showBooking }) {
       {/* About Us Section */}
       <div className="about-us-section">
         <div className="about-us-images">
-          <img src="/home/chefs.png" alt="chefs" />
-          <img src="/home/food.png" alt="food" />
+          <img src={chef} alt="chefs" />
+          <img src={food} alt="food" />
         </div>
         <div className="about-us-content">
           <h2 className="about-us-heading">About Us</h2>

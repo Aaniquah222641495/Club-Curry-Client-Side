@@ -37,6 +37,10 @@
   margin-left: 20px; /* Adjust this value to change the spacing */
 }
 
+.nav-link i{
+  filter : invert();
+}
+
 /* Add this new rule to change h1 headings to use Chonburi font */
 h1 {
   font-family: 'Chonburi', sans-serif;

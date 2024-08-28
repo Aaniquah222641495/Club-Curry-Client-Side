@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -91,7 +90,8 @@
 /* About Us Section Styles */
 .about-us-section {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
+  /*align-items: flex-start;*/
   margin-top: 50px;
   width: 100%;
   max-width: 1200px; /* Adjust based on your layout needs */
@@ -102,18 +102,25 @@
   flex-direction: column; /* Ensure images stack vertically */
   align-items: flex-start; /* Align images to the start (left) */
   margin-right: 30px; /* Space between images and text */
+  justify-content: center;
+  width: 80%;
 }
 
 .about-us-images img {
-  width: 400px; /* Increase size as needed */
-  height: auto; /* Maintain aspect ratio */
+  overflow: clip;
+  width: 100%; /* Increase size as needed */
+  max-height: 40%;
+  object-fit: cover;
   border-radius: 8px; /* Optional: Rounded corners */
-  margin-bottom: 30px; /* Space between stacked images */
+  margin-bottom: 5%; /* Space between stacked images */
 }
 
 .about-us-content {
-  flex: 1; /* Takes up the remaining space */
+  display: flex;
   text-align: left; /* Ensures text is left-aligned */
+  justify-content: center;
+  flex-direction: column;
+
 }
 
 .about-us-heading {
@@ -124,7 +131,7 @@
 
 /* HomePage.css */
 .review-section-card {
-  margin: 2rem auto;
+  margin: 5rem auto;
   padding: 1.5rem;
   max-width: 1000px; /* Adjust width as needed */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,3 +157,4 @@
 .review-section-card .btn {
   margin-top: 1rem;
 }
+
