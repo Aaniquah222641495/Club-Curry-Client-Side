@@ -8,6 +8,12 @@ body {
 }
 
 
+.container{
+ margin: 0% !important;
+ padding: 0% !important;
+ max-width: none !important;
+}
+
 
 /* App Styles */
 .App {

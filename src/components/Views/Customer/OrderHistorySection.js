@@ -6,28 +6,27 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; 
 import RestaurantDetails from './RestaurantDetails';
 
-const OrderHistorySection = ({decodedValue}) => {
-  console.log(decodedValue);
+const OrderHistorySection = ({ decodedValue }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [deliveries, setDeliveries] = useState([]);
   const navigate = useNavigate(); // Initialize useNavigate
 
-  const customerEmail = "customer@example.com"; // Replace this with the actual logged-in customer's email
-
   useEffect(() => {
     // Fetch deliveries for the specific customer
     const fetchDeliveries = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/ClubCurry/delivery/getByCustomerEmail/${customerEmail}`);
+        const response = await axios.get(`http://localhost:8080/ClubCurry/delivery/getByCustomerEmail/${decodedValue.email}`);
         setDeliveries(response.data);
       } catch (error) {
         console.error('Error fetching deliveries:', error);
       }
     };
 
-    fetchDeliveries();
-  }, [customerEmail]);
+    if (decodedValue?.email) {
+      fetchDeliveries();
+    }
+  }, [decodedValue]);
 
   // Handle Modal show/hide
   const handleShowModal = (order) => {
@@ -128,8 +127,8 @@ const OrderHistorySection = ({decodedValue}) => {
           </Modal.Footer>
         </Modal>
       )}
-          <RestaurantDetails></RestaurantDetails>
-
+      
+      <RestaurantDetails />
     </div>
   );
 };
