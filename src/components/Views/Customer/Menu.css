@@ -21,7 +21,7 @@ body {
   margin-bottom: 20px; /* Bottom margin for spacing */
   border-radius: 4px; /* Rounded corners */
   font-weight: bold; /* Bold text */
-  text-align: left; /* Left-aligned text */
+  text-align: center; /* Left-aligned text */
 }
 
 /* Menu Styles */
@@ -31,19 +31,33 @@ body {
   justify-content: center;
   padding: 20px;
 }
+.menu-wrapper h2{
+  text-align: center!important;
+}
 
 .menu-container {
   padding-top: 50px;
   width: 100%;
   max-width: 1200px; /* Adjust the max-width as needed */
+  background-color: rgb(255, 255, 255);
+}
+
+.menu-container h2{
+  text-align: center!important;
 }
 
 /* Flexbox for menu sections */
 .category-section {
   margin-bottom: 20px;
   padding: 10px;
-  border-bottom: 2px solid #ddd; /* Divider between sections */
+  border-bottom: 2px solid #8b0000; /* Divider between sections */
 }
+
+/* Flexbox for menu sections */
+.category-section h3{
+  color: #8b0000;
+}
+
 
 .category-section h2 {
   margin-bottom: 15px;

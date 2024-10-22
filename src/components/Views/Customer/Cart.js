@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Modal, Button, Accordion, Form, Alert } from 'react-bootstrap';
-import { FaTrashAlt } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Modal, Button, Accordion, Form, Alert } from "react-bootstrap";
+import { FaTrashAlt } from "react-icons/fa";
+//import { useNavigate } from "react-router-dom";
 
 const Cart = ({
   cartItems = [], // Default to an empty array to avoid undefined error
@@ -14,16 +14,16 @@ const Cart = ({
   onShowLogin,
   onShowSignup,
 }) => {
-  const [orderType, setOrderType] = useState('');
-  const [streetName, setStreetName] = useState('');
-  const [streetNumber, setStreetNumber] = useState('');
-  const [suburbName, setSuburbName] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [driverNote, setDriverNote] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('');
+  const [orderType, setOrderType] = useState("");
+  const [streetName, setStreetName] = useState("");
+  const [streetNumber, setStreetNumber] = useState("");
+  const [suburbName, setSuburbName] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [driverNote, setDriverNote] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
-  const navigate = useNavigate(); // Use navigate to redirect to home page
+  //const navigate = useNavigate(); // Use navigate to redirect to home page
 
   const handleQuantityChange = (uniqueId, change) => {
     onUpdateQuantity(uniqueId, change);
@@ -34,13 +34,25 @@ const Cart = ({
   };
 
   const getTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const handleCheckout = () => {
     if (isLoggedIn) {
-      if (!orderType || (orderType === 'Delivery' && (!streetName || !streetNumber || !suburbName || !postalCode || !driverNote)) || !paymentMethod) {
-        alert('Please complete all fields before proceeding.');
+      if (
+        !orderType ||
+        (orderType === "Delivery" &&
+          (!streetName ||
+            !streetNumber ||
+            !suburbName ||
+            !postalCode ||
+            !driverNote)) ||
+        !paymentMethod
+      ) {
+        alert("Please complete all fields before proceeding.");
         return;
       }
       onCheckout();
@@ -61,12 +73,14 @@ const Cart = ({
 
   const handleModalClose = () => {
     onCloseCart();
-    navigate('/');
   };
 
   return (
     <>
-      <div className={`modal-overlay ${showCart ? 'active' : ''}`} onClick={handleModalClose}></div>
+      <div
+        className={`modal-overlay ${showCart ? "active" : ""}`}
+        onClick={handleModalClose}
+      ></div>
       <Modal show={showCart} onHide={handleModalClose} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Cart</Modal.Title>
@@ -74,14 +88,13 @@ const Cart = ({
         <Modal.Body>
           {cartItems.length > 0 ? (
             <div className="cart-items">
-              {cartItems.map(item => (
+              {cartItems.map((item) => (
                 <div key={item.uniqueId} className="cart-item">
                   <img src={item.image} alt={item.name} />
                   <div className="cart-item-details">
                     <span>{item.name}</span>
                     <span>{item.spiceLevel}</span>
                     <span>Special Instructions: {item.specialNote}</span>
-                    
                   </div>
                   <div className="cart-item-actions">
                     <div className="item-quantity">
@@ -140,7 +153,7 @@ const Cart = ({
                   </Form>
                 </Accordion.Body>
               </Accordion.Item>
-              {orderType === 'Delivery' && (
+              {orderType === "Delivery" && (
                 <Accordion.Item eventKey="1">
                   <Accordion.Header>Delivery Details</Accordion.Header>
                   <Accordion.Body>
@@ -229,7 +242,9 @@ const Cart = ({
         <Modal.Footer>
           <div className="cart-footer">
             <h4>Total: R{getTotal()}</h4>
-            <p><i>A tip would be appreciated!</i></p>
+            <p>
+              <i>A tip would be appreciated!</i>
+            </p>
             <Button variant="success" onClick={handleCheckout}>
               Checkout
             </Button>
@@ -237,7 +252,11 @@ const Cart = ({
         </Modal.Footer>
       </Modal>
 
-      <Modal show={showLoginPrompt} onHide={() => setShowLoginPrompt(false)} centered>
+      <Modal
+        show={showLoginPrompt}
+        onHide={() => setShowLoginPrompt(false)}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Please Log In or Sign Up</Modal.Title>
         </Modal.Header>
@@ -245,7 +264,11 @@ const Cart = ({
           <Alert variant="warning">
             You need to be logged in to proceed with checkout.
           </Alert>
-          <Button variant="primary" onClick={handleLoginPromptClose} className="mr-2">
+          <Button
+            variant="primary"
+            onClick={handleLoginPromptClose}
+            className="mr-2"
+          >
             Log In
           </Button>
           <Button variant="secondary" onClick={handleSignupPromptClose}>

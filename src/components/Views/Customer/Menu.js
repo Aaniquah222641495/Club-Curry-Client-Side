@@ -86,12 +86,11 @@ const Menu = ({ addToCart }) => {
   return (
     <div className="menu-wrapper">
       <div className="menu-container">
-        <div className="alert-info">
-          Note: Curries contain nuts. Please specify if you have any allergies.
-        </div>
+        <h2>CLUB CURRY MENU</h2>
+        <br></br>
         {Object.keys(structuredMenu).map((category, index) => (
           <div key={index} className="category-section">
-            <h2>{category}</h2>
+            <h3>{category}</h3>
             {structuredMenu[category].map((item) => (
               <Button
                 key={item.id}
@@ -119,6 +118,9 @@ const Menu = ({ addToCart }) => {
           <Modal.Body>
             <img src={selectedItem.image} alt={selectedItem.name} />
             <p>{selectedItem.description}</p>
+            <div className="alert-info">
+          Note: Curries contain nuts. Please specify if you have any allergies.
+        </div>
             <Form>
               <Form.Group>
                 <Form.Label>Spice Level</Form.Label>
