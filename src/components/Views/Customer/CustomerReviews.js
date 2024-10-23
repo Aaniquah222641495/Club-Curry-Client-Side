@@ -6,7 +6,6 @@ import StarRating from '../../Common/StarRating';
 import '../Customer/CustomerCss/CustomerReviews.css';
 import review from '../../../images/review.png';
 import QR from '../../../images/QR.png';
-import RestaurantDetails from './RestaurantDetails';
 
 // Mapping numeric ratings to enum values
 const ratingValues = {
@@ -19,24 +18,21 @@ const ratingValues = {
 };
 
 const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
-  
-
   const [existingReviews, setExistingReviews] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [foodRating, setFoodRating] = useState('ZERO');
-  const [serviceRating, setServiceRating] = useState('ZERO');
-  const [atmosphereRating, setAtmosphereRating] = useState('ZERO');
+  const [foodRating, setFoodRating] = useState('ZERO'); // Use string values
+  const [serviceRating, setServiceRating] = useState('ZERO'); // Use string values
+  const [atmosphereRating, setAtmosphereRating] = useState('ZERO'); // Use string values
   const [comments, setComments] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
-    // Fetch customer reviews from the backend using the customer email
     const fetchReviews = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/ClubCurry/review/getAllByCustomerEmail/${customer.email}`);
         setExistingReviews(response.data);
       } catch (error) {
-        console.error("Error fetching customer reviews:", error);
+        console.error('Error fetching customer reviews:', error);
       }
     };
 
@@ -53,41 +49,45 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
   };
 
   const resetFormFields = () => {
-    setFoodRating('ZERO');
-    setServiceRating('ZERO');
-    setAtmosphereRating('ZERO');
+    setFoodRating('ZERO'); // Reset to string
+    setServiceRating('ZERO'); // Reset to string
+    setAtmosphereRating('ZERO'); // Reset to string
     setComments('');
   };
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
 
+    console.log('Submitting review...');
+    console.log('Food Rating:', foodRating);
+    console.log('Service Rating:', serviceRating);
+    console.log('Atmosphere Rating:', atmosphereRating);
+    console.log('Comments:', comments);
+
     if (foodRating === 'ZERO' || serviceRating === 'ZERO' || atmosphereRating === 'ZERO' || !comments) {
       setAlertMessage('Please fill in all required fields.');
+      console.log('Validation failed:', alertMessage);
       return;
     }
 
     const newReview = {
-
-     
-      customer:{email:customer.email},
+      customer: { email: customer.email },
       rating: {
-        foodQuality: Object.keys(ratingValues).find(key => ratingValues[key] === foodRating),
-        serviceQuality: Object.keys(ratingValues).find(key => ratingValues[key] === serviceRating),
-        atmosphereQuality: Object.keys(ratingValues).find(key => ratingValues[key] === atmosphereRating),
+        foodQuality: foodRating,
+        serviceQuality: serviceRating,
+        atmosphereQuality: atmosphereRating,
       },
-      
-      comments,
+      note :comments,
     };
-    console.log(newReview.rating.atmosphereQuality);
 
     try {
       const response = await axios.post('http://localhost:8080/ClubCurry/review/save', newReview);
-      setExistingReviews([...existingReviews, response.data]); // Add the new review to the existing list
+      console.log('Review submitted successfully:', response.data);
+      setExistingReviews([...existingReviews, response.data]);
       setAlertMessage('Thank you for your review!');
       handleCloseModal();
     } catch (error) {
-      console.error("Error submitting review:", error);
+      console.error('Error submitting review:', error);
       setAlertMessage('Error submitting review. Please try again.');
     }
   };
@@ -99,7 +99,7 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
         setExistingReviews(existingReviews.filter((review) => review.id !== reviewId));
         onDeleteReview(reviewId);
       } catch (error) {
-        console.error("Error deleting review:", error);
+        console.error('Error deleting review:', error);
       }
     }
   };
@@ -126,19 +126,21 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
                   </div>
                   <div className="review-body">
                     <div className="rating-item">
-                      <p><strong>Food Rating:</strong> {review.foodQuality}/5</p>
-                      <StarRating rating={ratingValues[review.foodQuality]} readOnly />
+                      <p><strong>Food Rating:</strong> {review.rating.foodQuality}/5</p>
+                      <StarRating rating={review.rating.foodQuality} readOnly />
                     </div>
                     <div className="rating-item">
-                      <p><strong>Service Rating:</strong> {review.serviceQuality}/5</p>
-                      <StarRating rating={ratingValues[review.serviceQuality]} readOnly />
+                      <p><strong>Service Rating:</strong> {review.rating.serviceQuality}/5</p>
+                      <StarRating rating={review.rating.serviceQuality} readOnly />
                     </div>
                     <div className="rating-item">
-                      <p><strong>Atmosphere Rating:</strong> {review.atmosphereQuality}/5</p>
-                      <StarRating rating={ratingValues[review.atmosphereQuality]} readOnly />
+                      <p><strong>Atmosphere Rating:</strong> {review.rating.atmosphereQuality}/5</p>
+                      <StarRating rating={review.rating.atmosphereQuality} readOnly />
                     </div>
                     <div className="rating-item">
-                      <p>{review.comments}</p>
+                      {/* Horizontal line below the customer name */}
+                      <hr className="review-divider" />
+                      <p>{review.note}</p>
                     </div>
                   </div>
                   <div className="review-actions">
@@ -167,8 +169,6 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
         <img src={QR} alt="QR code" className="qr-image" />
       </div>
 
-      <RestaurantDetails />
-
       {/* Modal for adding a review */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
@@ -179,15 +179,15 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
           <Form onSubmit={handleSubmitReview}>
             <Form.Group>
               <Form.Label>Food Rating</Form.Label>
-              <StarRating rating={foodRating} onRate={(rate) => setFoodRating(ratingValues[rate])} />
+              <StarRating rating={foodRating} onRate={(rate) => setFoodRating(ratingValues[rate])} /> {/* Update here */}
             </Form.Group>
             <Form.Group>
               <Form.Label>Service Rating</Form.Label>
-              <StarRating rating={serviceRating} onRate={(rate) => setServiceRating(ratingValues[rate])} />
+              <StarRating rating={serviceRating} onRate={(rate) => setServiceRating(ratingValues[rate])} /> {/* Update here */}
             </Form.Group>
             <Form.Group>
               <Form.Label>Atmosphere Rating</Form.Label>
-              <StarRating rating={atmosphereRating} onRate={(rate) => setAtmosphereRating(ratingValues[rate])} />
+              <StarRating rating={atmosphereRating} onRate={(rate) => setAtmosphereRating(ratingValues[rate])} /> {/* Update here */}
             </Form.Group>
             <Form.Group>
               <Form.Label>Comments</Form.Label>
@@ -206,7 +206,7 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
 CustomerReviews.propTypes = {
   onAddReview: PropTypes.func.isRequired,
   onDeleteReview: PropTypes.func.isRequired,
-  customer: PropTypes.object.isRequired
+  customer: PropTypes.object.isRequired,
 };
 
 export default CustomerReviews;
