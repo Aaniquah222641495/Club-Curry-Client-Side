@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 
-const DeliveryForm = ({order, onSubmitOrder, setShow}) => {
+const DeliveryForm = ({ order, onSubmitOrder, setShow, show }) => {
     const [deliveryData, setDeliveryData] = useState({
         delivered: false,
         completed: '',
         timeOfDelivery: '',
         status: 'PENDING',
         order: {
-            id: order.id
+            id: order.id // Prefill the order ID from the order object
         },
         address: {
             streetName: '',
@@ -19,12 +19,11 @@ const DeliveryForm = ({order, onSubmitOrder, setShow}) => {
             }
         },
         customerId:{
-            email: 'kay@email.com'
+            email: 'kay@email.com' //fake customer
         }
     });
 
     const handleClose = () => setShow(false);
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,17 +50,12 @@ const DeliveryForm = ({order, onSubmitOrder, setShow}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(deliveryData);
-        onSubmitOrder();
+        onSubmitOrder(); // Call the parent submit handler
         handleClose(); // Close the modal after submitting
     };
 
-    const submitDelivery = () => {
-
-    }
-
     return (
-        <>
-        <Modal onHide={handleClose}>
+        <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Delivery Form</Modal.Title>
             </Modal.Header>
@@ -74,15 +68,8 @@ const DeliveryForm = ({order, onSubmitOrder, setShow}) => {
                                 <Form.Control
                                     type="text"
                                     name="orderId"
-                                    value={deliveryData.order.id}
-                                    onChange={(e) => setDeliveryData({
-                                        ...deliveryData,
-                                        order: {
-                                            ...deliveryData.order,
-                                            id: e.target.value
-                                        }
-                                    })}
-                                    readOnly={true}
+                                    value={deliveryData.order.id} // Prefilled order ID
+                                    readOnly={true} // Order ID is read-only
                                 />
                             </Form.Group>
 
@@ -158,12 +145,11 @@ const DeliveryForm = ({order, onSubmitOrder, setShow}) => {
                         </Col>
                     </Row>
                     <Button variant="primary" type="submit">
-                        Submit
+                        Submit Delivery
                     </Button>
                 </Form>
             </Modal.Body>
         </Modal>
-        </>
     );
 };
 
