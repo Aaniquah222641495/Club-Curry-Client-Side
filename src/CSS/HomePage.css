@@ -1,8 +1,4 @@
-/* Apply Lato font to all paragraphs */
-p {
-  font-family: 'Lato', sans-serif;
-  text-align: justify; /* Justifies text */
-}
+
 
 /* Home Page Styles */
 .home-page {
@@ -47,18 +43,38 @@ p {
 }
 
 /* Typewriter Effect */
+/* Typewriter Effect with Gold and 3D Styling */
 .typewriter-title {
   overflow: hidden; /* Ensures the text doesn't wrap */
-  background: linear-gradient(to bottom, #ffcc00, #ffbc20); /* More intense yellow-gold gradient */
+  background: linear-gradient(to bottom, #877221, #ffbc20); /* More intense yellow-gold gradient */
   -webkit-background-clip: text; /* Clips the background to the text */
   color: transparent; /* Makes the text color transparent, showing the gradient */
-  font-size: 5rem;
-  white-space: nowrap; /* Prevents the text from wrapping to the next line */
-  border-right: 4px solid #ffcc00; /* Cursor effect */
-  font-family: 'Chonburi', sans-serif; /* Monospace font for typewriter effect */
+  font-size: 6.5rem;
+  white-space: nowrap; /* Prevents the text from wrapping */
+  border-right: 4px solid #3a320f; /* Cursor effect */
+  font-family: 'Chonburi', sans-serif; /* Font for typewriter effect */
   width: 0; /* Initially set width to 0 for typewriting effect */
-  animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite; /* Apply typing animation */
+  animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite; /* Typewriting animation */
   margin-bottom: 20px;
+  
+  /* 3D Gold Effect */
+  text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.8), /* Light highlight on the top-left for a 3D feel */
+    2px 2px 5px rgba(0, 0, 0, 0.5), /* Dark shadow on the bottom-right for depth */
+    0px 0px 20px rgba(255, 204, 0, 0.6); /* Soft golden glow effect around the text */
+  letter-spacing: 2px; /* Adds spacing for more dramatic effect */
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Blinking caret */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #ffcc00; }
 }
 
 
@@ -101,6 +117,12 @@ p {
   }
 }
 
+.lead {
+  font-size: 2.5rem !important;
+  color: rgba(116, 28, 37, 1);
+  font-family: 'Montserrat', sans-serif !important; 
+   }
+
 /* Button Styles */
 .buttonmen,
 .button-booking {
@@ -125,7 +147,7 @@ p {
 
 /* About Us Section Styles */
 .about-us-section {
-  text-align: center; /* Center align the content */
+  text-align: justify; /* Center align the content */
   padding: 4rem 2rem; /* Add padding to the section */
   background-color: #fff; /* Background color */
   max-width: 1200px;
@@ -153,11 +175,14 @@ p {
 
 .about-us-heading {
   font-size: 3rem;
-  font-family: 'Chonburi', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
   margin-bottom: 15px;
   text-align: center;
-  color:  rgba(116, 28, 37, 1);;
+  color: rgba(116, 28, 37, 1);
 }
+
+
 
 /* Review Section Styles */
 .home-page .review-section {
@@ -219,13 +244,13 @@ p {
 }
 
 .trading-hours h3 {
-  font-family: 'Chonburi', sans-serif;
-  font-size: 2rem;
-  color: rgba(116, 28, 37, 1);
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
   margin-bottom: 15px;
-  margin-top: 20px;
+  text-align: center;
+  color: rgba(116, 28, 37, 1);
 }
-
 .trading-hours ul {
   list-style: none;
   padding: 0;
@@ -291,13 +316,13 @@ p {
 .address-section h3,
 .phone-section h3,
 .email-section h3 {
-  font-family: 'Chonburi', sans-serif;
-  font-size: 1.5rem; /* Adjust size as needed */
-  color: #292728; /* Dark color for headings */
-  display: flex; /* Make heading a flex container */
-  align-items: center; /* Center align heading items */
+  font-size: 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
+  margin-bottom: 15px;
+  text-align: center;
+  color: rgb(12, 3, 4);
 }
-
 /* Paragraph Styles */
 .address-section p,
 .phone-section p,

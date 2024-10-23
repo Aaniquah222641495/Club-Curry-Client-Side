@@ -4,47 +4,49 @@
 .review-image{
   width: 100%;
 
-  height: 270px;
+  height: 100%;
 }
+
+
+
 
 .feedback-section {
   display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space between text and QR image */
-  padding: 10px; /* Padding for the feedback section */
+  padding: 30px; /* Padding for the feedback section */
   background-color: #f8f9fa; /* Light background color */
   border: 1px solid #dee2e6; /* Optional border */
   border-radius: 8px; /* Rounded corners */
-  margin: 20px 0; /* Margin above and below */
+  
 
 }
 
 .feedback-text {
   flex: 1; /* Allow text to take available space */
-  margin-right: 20px; /* Space between text and QR image */
+  margin-right: 40px; /* Space between text and QR image */
   font-size: 1.2rem; /* Slightly larger text for description */
   color: #6c757d; /* Light grey color for the text */
   max-width: 800px; /* Limit the width of the text */
   line-height: 1.6; /* Increase line height for readability */
-  padding-left: 20px; /* Indent the text to the left */
+text-align: left; 
 }
 
 .add-review-button {
   padding: 10px 20px; /* Padding for the button */
-  background-color: #007bff; /* Primary button color */
   color: #fff; /* Button text color */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
   margin-top: 10px; /* Add some space above the button */
-  padding-left: 20px;
+  padding-left: 20px !important; 
+ 
 }
 
 
 
 .qr-image {
-  width: auto; /* Set width according to your design */
-  height: 500px; /* Adjust height as needed */
+  width: 45%; /* Set width according to your design */
+  height: 50%; /* Adjust height as needed */
 }
 
 
@@ -52,15 +54,19 @@
 
 
 .feedback-section h3 {
-  color: rgb(0, 0, 0); /* Primary dark red color for headers */
   font-size: 3rem;
-  margin-bottom: 2rem;
-  padding-left: 1px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
+  margin-bottom: 30px;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  margin-top: 50px;
+  
 }
 
 
 .reviews-container {
-  margin-top: 30px;
+ 
   background-color: #fff;
   border-radius: 8px;
   padding: 15px;
@@ -68,15 +74,16 @@
 }
 
 .reviews-container h3 {
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
+  margin-bottom: 30px;
   text-align: center;
-  margin-bottom: 20px;
-  font-family: 'Chonburi', sans-serif; /* Use a cohesive font */
-  font-size: 2.5rem; /* Adjust size for prominence */
-  color: #741c25; /* Primary dark red color */
-  text-transform: uppercase; /* Make text uppercase for emphasis */
-  letter-spacing: 1px; /* Slightly increase spacing between letters */
-  border-bottom: 2px solid #741c25; /* Underline effect */
-  padding-bottom: 10px; /* Space between text and underline */
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
+  
+
+
 }
 
 .reviews-slider {
@@ -157,98 +164,3 @@
 /* CustomerReviews.css */
 
 
-/* Restaurant Details Section */
-.restaurant-details-section {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1800px; /* Adjust based on your layout needs */
-  color: #fff;
-  overflow: hidden; /* Ensure content stays within bounds */
-  
-}
-
-/* Restaurant Details Left Column */
-.details-left {
-  flex: 1;
-  padding: 50px;
-  background-color: rgba(255, 255, 255, 0.8); /* Light background for contrast */
-  color: #000;
-  font-family: 'Chonburi', sans-serif;
-}
-
-/* Restaurant Details Right Column */
-.details-right {
-  flex: 1;
-  padding: 50px;
-  background-color: rgba(255, 255, 255, 0.8); /* Light background for contrast */
-}
-
-/* Address, Phone, and Email Sections */
-.address-section,
-.phone-section,
-.email-section {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack items vertically */
-}
-
-/* Heading Styles */
-.address-section h3,
-.phone-section h3,
-.email-section h3 {
-  font-family: 'Chonburi', sans-serif;
-  font-size: 1.75rem; /* Slightly larger for emphasis */
-  color: #292728; /* Dark color for headings */
-  margin-bottom: 10px; /* Space below headings */
-  display: flex; /* Make heading a flex container */
-  align-items: center; /* Center align heading items */
-}
-
-/* Paragraph Styles */
-.address-section p,
-.phone-section p,
-.email-section p {
-  margin: 5px 0 0 30px; /* Add space above paragraph and left alignment */
-  padding: 5; /* Remove default padding */
-  font-size: 1rem; /* Adjust text size */
-  line-height: 1.5; /* Ensure readability */
-}
-
-/* Icon Background Style */
-.address-section p i,
-.phone-section p i,
-.email-section p i,
-.address-section h3 i,
-.phone-section h3 i,
-.email-section h3 i {
-  margin-right: 8px; /* Gap between icon and text */
-  font-size: 1.5rem; /* Smaller size for icons */
-  width: 2.5rem; /* Adjust width of the circle */
-  height: 2.5rem; /* Adjust height of the circle */
-  border-radius: 50%; /* Makes the background circular */
-  background: linear-gradient(45deg, #741c25, #741c25) !important; /* Adjust the colors as needed */
-  color: #fff; /* Icon color (white) */
-  text-align: center; /* Center the icon inside the circle */
-  line-height: 2.5rem; /* Align icon vertically */
-  margin-top: 5px;
-}
-
-/* Map Container */
-.map-container {
-  margin-top: 1rem;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 450px; /* Adjust as needed */
-  border: 0;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}

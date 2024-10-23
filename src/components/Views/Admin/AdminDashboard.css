@@ -10,13 +10,46 @@
 }
 
 .admin-dashboard-tabs {
-    margin-top: 70px;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 
 .admin-dashboard-tabs button {
     margin: 0 10px;
-    padding: 10px 20px;
+    padding: 30px 30px;
+    background-color: #80212b;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-dashboard-tabs button:hover {
+    background-color: #b45960;
+}
+
+.admin-dashboard-content {
+    width: 100%;
+    max-width: 1200px;
+    background-image: url('../../../images/adminbg.svg'); /* Path to your SVG */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styles for responsiveness, if needed */
+
+.admin-dashboard-tabs {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.admin-dashboard-tabs button {
+    margin: 0 10px;
+    padding: 30px 30px;
     background-color: #80212b;
     border: none;
     color: white;

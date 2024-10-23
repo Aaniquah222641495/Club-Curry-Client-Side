@@ -6,8 +6,10 @@ import MenuAdmin from "./MenuAdmin";
 import ManageCustomers from "./ManageComponents/CustomerManagement/ManageCustomers";
 import ManageAdmin from "./ManageComponents/AdminManagement/ManageAdmin";
 import ManageEmployees from "./ManageComponents/EmployeeManagement/ManageEmployee";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen, faUtensils, faTruck, faUserTie, faUserShield, faUsers } from '@fortawesome/free-solid-svg-icons';
 
-const AdminDashboard = ({decodedValue}) => {
+const AdminDashboard = ({ decodedValue }) => {
     console.log(decodedValue);
     const [activeTab, setActiveTab] = useState('bookings');
 
@@ -18,15 +20,13 @@ const AdminDashboard = ({decodedValue}) => {
             case 'drivers':
                 return <ManageDriver />;
             case 'menu':
-                return <MenuAdmin />; // Use MenuAdmin component here
+                return <MenuAdmin />;
             case 'customers':
                 return <ManageCustomers />;
             case 'employees':
                 return <ManageEmployees />;
             case 'admins':
                 return <ManageAdmin />;
-            
-        
             default:
                 return <ManageBooking />;
         }
@@ -35,13 +35,24 @@ const AdminDashboard = ({decodedValue}) => {
     return (
         <div className="admin-dashboard-container">
             <div className="admin-dashboard-tabs">
-                <button onClick={() => setActiveTab('bookings')}>Manage Bookings</button>
-                <button onClick={() => setActiveTab('menu')}>Manage Menu</button>
-                <button onClick={() => setActiveTab('drivers')}>Manage Drivers</button>
-                <button onClick={() => setActiveTab('employees')}>Manage Employees</button>
-                <button onClick={() => setActiveTab('admins')}>Manage Admins</button>
-                <button onClick={() => setActiveTab('customers')}>Manage Customers</button>
-                
+                <button onClick={() => setActiveTab('bookings')}>
+                    <FontAwesomeIcon icon={faBookOpen} /> Manage Bookings
+                </button>
+                <button onClick={() => setActiveTab('menu')}>
+                    <FontAwesomeIcon icon={faUtensils} /> Manage Menu
+                </button>
+                <button onClick={() => setActiveTab('drivers')}>
+                    <FontAwesomeIcon icon={faTruck} /> Manage Drivers
+                </button>
+                <button onClick={() => setActiveTab('employees')}>
+                    <FontAwesomeIcon icon={faUserTie} /> Manage Employees
+                </button>
+                <button onClick={() => setActiveTab('admins')}>
+                    <FontAwesomeIcon icon={faUserShield} /> Manage Admins
+                </button>
+                <button onClick={() => setActiveTab('customers')}>
+                    <FontAwesomeIcon icon={faUsers} /> Manage Customers
+                </button>
             </div>
             <div className="admin-dashboard-content">
                 {renderActiveTab()}

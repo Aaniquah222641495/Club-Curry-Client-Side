@@ -42,13 +42,13 @@
   .address-section h3,
   .phone-section h3,
   .email-section h3 {
-    font-family: 'Chonburi', sans-serif;
-    font-size: 1.75rem; /* Slightly larger for emphasis */
-    color: #292728; /* Dark color for headings */
-    margin-bottom: 10px; /* Space below headings */
-    display: flex; /* Make heading a flex container */
-    align-items: center; /* Center align heading items */
-  }
+    font-size: 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; /* Bold and thick */
+  margin-bottom: 15px;
+  text-align: center;
+  color: rgb(12, 3, 4);
+}
   
   /* Paragraph Styles */
   .address-section p,
