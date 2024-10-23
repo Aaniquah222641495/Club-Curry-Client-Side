@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
-import {OrderContext} from './OrderContext';
-import './OrderSummary.css'; // Assuming you have the CSS file for styling
+import './OrderSummary.css';
+import DeliveryForm from "./DeliveryForm"; // Assuming you have the CSS file for styling
 
 const OrderSummary = (props) => {// Use context to get addToOrder
     const [confirmationMessage, setConfirmationMessage] = useState('');
@@ -12,12 +12,10 @@ const OrderSummary = (props) => {// Use context to get addToOrder
             return; // No items to submit
         }
         // Call the function to submit the order
-
+        props.onSubmitOrder();
         // Set confirmation message
         setConfirmationMessage(`Order #Insert order Number has been created.`);
 
-        // Clear the order summary
-        props.onSubmitOrder(); // Function to clear the order summary
 
         // Automatically hide the confirmation message after 3 seconds
         setTimeout(() => {
@@ -71,7 +69,6 @@ const OrderSummary = (props) => {// Use context to get addToOrder
             <button className="submit-order-button" onClick={handleSubmit}>
                 Submit Order
             </button>
-
         </div>
     );
 };

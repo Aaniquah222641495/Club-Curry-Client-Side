@@ -39,6 +39,7 @@ const OrderManagement = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [drivers, setDriver] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -52,7 +53,21 @@ const OrderManagement = () => {
       }
     }
 
+    const fetchDrivers = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/ClubCurry/driver/getAll");
+        setDriver(response.data);
+        console.log("Loaded drivers successfully" + drivers);
+      }
+
+      catch (error){
+        console.log("Error fetching drivers " + drivers);
+      }
+
+    }
+
     fetchOrders();
+    fetchDrivers();
   }, []);
 
   const handleStatusChange = (order, newStatus) => {
@@ -135,7 +150,7 @@ const OrderManagement = () => {
                   <td>{order.cart.customer.name ? order.cart.customer.name : 'Walk-in Customer'}</td>
                   <td>{order.paymentMethod}</td>
                   <td>
-                    <select class="status-dropdown"
+                    <select className="status-dropdown"
                       value={order.orderStatus}
                       onChange={(e) => handleStatusChange(order, e.target.value)}
                       disabled={order.status === 'Cancelled'}
@@ -147,8 +162,8 @@ const OrderManagement = () => {
                       ))}
                     </select>
                   </td>
-                  <td class="action-cell">
-                    <button onClick={() => handleViewDetails(order)} class="btn-view-details">
+                  <td className="action-cell">
+                    <button onClick={() => handleViewDetails(order)} className="btn-view-details">
                       View Details
                     </button>
                   </td>
@@ -166,6 +181,7 @@ const OrderManagement = () => {
             <tr>
               <th>Order ID</th>
               <th>Delivery ID</th>
+              <th>Driver</th>
               <th>Date</th>
               <th>Time</th>
               <th>Customer</th>
@@ -181,15 +197,28 @@ const OrderManagement = () => {
                 <tr key={order.id}>
                   <td>{order.id}</td>
                   <td>{order.deliveryId}</td>
+                  <td>
+                    <select
+                        value={order}
+                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                        disabled={order.status === 'Cancelled'}
+                    >
+                      {getStatusOptions(order.collectionType).map((statusOption) => (
+                          <option key={statusOption} value={statusOption}>
+                            {statusOption}
+                          </option>
+                      ))}
+                    </select>
+                  </td>
                   <td>{order.ordered}</td>
                   <td>{order.time}</td>
                   <td>{order.cart.customer.name}</td>
                   <td>{order.paymentMethod}</td>
                   <td>
                     <select
-                      value={order.status}
-                      onChange={(e) => handleStatusChange(order.id, e.target.value)}
-                      disabled={order.status === 'Cancelled'}
+                        value={order.status}
+                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                        disabled={order.status === 'Cancelled'}
                     >
                       {getStatusOptions(order.collectionType).map((statusOption) => (
                         <option key={statusOption} value={statusOption}>
@@ -198,8 +227,8 @@ const OrderManagement = () => {
                       ))}
                     </select>
                   </td>
-                  <td class="action-cell">
-                    <button onClick={() => handleViewDetails(order)} class="btn-view-details">
+                  <td className="action-cell">
+                    <button onClick={() => handleViewDetails(order)} className="btn-view-details">
                       View Details
                     </button>
                   </td>
@@ -247,8 +276,8 @@ const OrderManagement = () => {
                       ))}
                     </select>
                   </td>
-                  <td class="action-cell">
-                    <button onClick={() => handleViewDetails(order)} class="btn-view-details">
+                  <td className="action-cell">
+                    <button onClick={() => handleViewDetails(order)} className="btn-view-details">
                       View Details
                     </button>
                   </td>
