@@ -6,11 +6,16 @@
    width: 100%;
    margin: 0 auto; /* This will center the container */
    padding: 20px;
-   background-color: #e58a93;
+   background-color: #fff;
    border-radius: 8px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    justify-content: center;
   }
+
+  .menu-table-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
   
   .menu-admin-heading {
 font-weight: bold;;
@@ -64,8 +69,11 @@ font-weight: bold;;
   
   .menu-item h5 {
     margin: 0;
-    font-size: 1.25rem;
-    color: #80212b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bold; /* Bold and thick */
+
+    font-size: 2.25rem;
+    color: rgb(0, 0, 0);
   }
   
   .menu-item p {

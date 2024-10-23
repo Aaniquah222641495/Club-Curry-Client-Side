@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DriverModal from "./DriverModal";
 import "./ManageDriver.css"; // Importing CSS specific to ManageDriver
-
+import driverm from '../../../../../images/driverm.svg'
 const ManageDriver = () => {
     const [drivers, setDrivers] = useState([]); // State to store the list of drivers
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,7 +70,7 @@ const ManageDriver = () => {
 
     return (
         <div className="manage-drivers-container">
-            <h2 className="driver-table-heading">Driver Management</h2>
+            <img src={driverm} className="driver-table-image" />
             <button className="btn btn-primary mb-3" onClick={() => openModal()}>
                 Add New Driver
             </button>

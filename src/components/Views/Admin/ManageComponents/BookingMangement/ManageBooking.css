@@ -1,6 +1,10 @@
 .manage-bookings-container {
-    background-color: #e58a93;
-    padding: 2rem;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .booking-table-heading {
@@ -8,14 +12,18 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
-
+.booking-table-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
 .booking-table {
     
     margin-top: 1rem;
 }
 
 .booking-table th{
-    background-color: #80212b !important;
+    background-color: #dee2e6 !important;
+    color: #000;
 }
 
 .btn-primary {

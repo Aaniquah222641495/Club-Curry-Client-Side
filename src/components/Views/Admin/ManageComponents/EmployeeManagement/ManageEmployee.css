@@ -1,7 +1,7 @@
 .manage-employees-container {
     margin: 20px;
     padding: 20px;
-    background-color: #e58a93;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -13,7 +13,10 @@
     text-align: center;
     color: white;
 }
-
+.employee-table-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
 .employee-table {
     width: 100%;
     border-collapse: collapse;
@@ -27,9 +30,12 @@
 }
 
 .employee-table th {
-    background-color: #80212b;
-    color: white;
-    text-align: center;
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    
+
 }
 
 .employee-table tbody tr:nth-child(odd) {

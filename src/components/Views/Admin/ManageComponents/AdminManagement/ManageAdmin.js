@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AdminModal from "./AdminModal";
 import "./ManageAdmin.css"; // Importing CSS specific to ManageAdmin
+import adminm from '../../../../../images/adminm.svg'
 
 const ManageAdmin = () => {
     const [admins, setAdmins] = useState([]); // State to store the list of admins
@@ -48,7 +49,7 @@ const ManageAdmin = () => {
 
     return (
         <div className="manage-admins-container">
-            <h2 className="admin-table-heading">Admin Management</h2>
+            <img src={adminm} className="admin-table-image" />
             <button className="btn btn-primary mb-3" onClick={() => openModal()}>
                 Add New Admin
             </button>

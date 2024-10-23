@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import "./ManageCustomer.css"; // Ensure this file exists and is styled accordingly
 import CustomerModal from './CustomerModal'; // Import the CustomerModal
+import customerm from '../../../../../images/customerm.svg'
 
 const ManageCustomers = () => {
     const [customers, setCustomers] = useState([]);
@@ -66,7 +67,7 @@ const ManageCustomers = () => {
 
     return (
         <div className="customer-manage-container">
-            <h2 className="customer-manage-heading">Manage Customers</h2>
+            <img src={customerm} className="customer-table-image" />
             <button className="customer-btn customer-btn-primary" onClick={handleAddClick}>Add Customer</button>
 
             {loading ? (

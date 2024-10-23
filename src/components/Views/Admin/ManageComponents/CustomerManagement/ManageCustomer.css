@@ -2,8 +2,8 @@
 .customer-manage-container {
     margin: 20px;
     padding: 20px;
-    background-color: #e58a93;    ;
     border-radius: 8px;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
 }
@@ -31,10 +31,17 @@
 }
 
 .customer-table thead th {
-    background-color: #80212b;
-    color: white;
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
     font-weight: bold;
+    
 }
+.customer-table-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 
 .customer-table tbody tr:nth-child(odd) {
     background-color: #f8f9fa;
