@@ -162,7 +162,7 @@ const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
         </nav>
         <div className="employee-main-content">
           <Employee handleAddToOrder={handleAddToOrder} products={products} currentMenuId={currentMenuId}/>
-          <OrderSummary onSubmitOrder={() => (collectionType === "DELIVERY" ? setShowDeliveryForm(true) : setShowDeliveryForm(false))} orderSummary={orderSummary}
+          <OrderSummary onSubmitOrder={onSubmitOrder} orderSummary={orderSummary}
                         handleRemoveFromOrder={handleRemoveFromOrder} handlePaymentChange={handlePaymentChange} handleCollectionChange={handleCollectionChange}/>
           {showDeliveryForm && <DeliveryForm order={orderSummary} onSubmitOrder={onSubmitOrder} setShow={setShowDeliveryForm}/>}
         </div>
