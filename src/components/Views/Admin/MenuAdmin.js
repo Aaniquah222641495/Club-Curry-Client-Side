@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './MenuAdmin.css';
+import menum from '../../../images/menum.svg'
 
 const MenuAdmin = () => {
   // Existing state hooks
@@ -244,8 +245,8 @@ const MenuAdmin = () => {
 
   return (
     <div className="menu-admin-container">
-      <h2 className="menu-admin-heading">Menu Management</h2>
-      <div className="add-item-section">
+            <img src={menum} className="menu-table-image" />
+            <div className="add-item-section">
         <Button className="add-item-button" onClick={handleAddMenuShow}>
           Add New Menu
         </Button>

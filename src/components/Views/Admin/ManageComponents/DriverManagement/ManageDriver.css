@@ -1,8 +1,8 @@
 .manage-drivers-container {
     margin: 20px;
     padding: 20px;
-    background-color: #e58a93;
     border-radius: 8px;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,18 +18,28 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-}
-
-.driver-table th, .driver-table td {
-    border: 1px solid #dee2e6;
-    padding: 8px;
-    text-align: left;
+   
 }
 
 .driver-table th {
-    background-color: #80212b;
-    color: white;
-    text-align: center;
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    
+
+}
+
+.driver-table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+    
+}
+
+.driver-table-image {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .driver-table tbody tr:nth-child(odd) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EmployeeModal.css';
 
+
 const EmployeeModal = ({ isOpen, onClose, employee = null, onSubmit }) => {
     const [formData, setFormData] = useState({
         id: "",

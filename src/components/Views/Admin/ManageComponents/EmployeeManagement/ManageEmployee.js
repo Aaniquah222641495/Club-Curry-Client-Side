@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EmployeeModal from "./EmployeeModal";
 import "./ManageEmployee.css"; // CSS specific to ManageEmployee
+import employeem from '../../../../../images/employeem.svg'
 
 const ManageEmployee = () => {
     const [employees, setEmployees] = useState([]); 
@@ -46,7 +47,7 @@ const ManageEmployee = () => {
 
     return (
         <div className="manage-employees-container">
-            <h2 className="employee-table-heading">Employee Management</h2>
+            <img src={employeem} className="employee-table-image" />
             <button className="btn btn-primary mb-3" onClick={() => openModal()}>
                 Add New Employee
             </button>
