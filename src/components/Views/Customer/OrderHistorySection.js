@@ -9,7 +9,7 @@ import RestaurantDetails from './RestaurantDetails';
 import order1 from '../../../images/order1.png'
 import order2 from '../../../images/order2.png'
 
-const OrderHistorySection = ({customer }) => {
+const OrderHistorySection = ({customer}) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [deliveries, setDeliveries] = useState([]);
@@ -62,18 +62,17 @@ const OrderHistorySection = ({customer }) => {
       
       <div className="orders-container">
         {deliveries
-          .filter(order => order.isDelivered) 
-          .map(order => (
-            <div key={order.id} className="order-card">
+          .filter(delivery => delivery.delivered)
+          .map(delivery => (
+            <div key={delivery.id} className="order-card">
               <Card className="mb-4">
                 <Card.Body>
-                  <Card.Title>Order #{order.id}</Card.Title>
-                  <p><strong>Store:</strong> {order.order.restaurantName}</p>
-                  <p><strong>Date:</strong> {new Date(order.completed).toLocaleDateString()}</p> {/* Displaying date */}
-                  <p><strong>Time:</strong> {order.timeOfDelivery}</p> {/* Displaying time */}
-                  <p><strong>Cost:</strong> ${order.order.total.toFixed(2)}</p>
-                  <p><strong>Payment:</strong> {order.order.paymentMethod}</p>
-                  <p><strong>Status:</strong> {order.status}</p>
+                  <Card.Title>Order #{delivery.id}</Card.Title>
+                  <p><strong>Date:</strong> {new Date(delivery.completed).toLocaleDateString('it-IT')}</p> {/* Displaying date */}
+                  <p><strong>Time:</strong> {delivery.timeOfDelivery}</p> {/* Displaying time */}
+                  <p><strong>Cost:</strong> ${delivery.order.cart.items.reduce((total, current) => (total + current.menuItem.price * current.quantity), 0)}</p>
+                  <p><strong>Payment:</strong> {delivery.order.paymentMethod}</p>
+                  <p><strong>Status:</strong> {delivery.status}</p>
                   <Button variant="primary" className="mt-2">Reorder</Button>
                 </Card.Body>
               </Card>
@@ -85,18 +84,17 @@ const OrderHistorySection = ({customer }) => {
       <img src={order2} alt="order- header" className="order-image" />
       <Row className="delivery-status-container">
         {deliveries
-          .filter(order => !order.isDelivered) // Filter for ongoing deliveries
-          .map(order => (
-            <Col md={4} key={order.id}>
+          .filter(delivery => !delivery.delivered) // Filter for ongoing deliveries
+          .map(delivery => (
+            <Col md={4} key={delivery.id}>
               <Card className="mb-4">
                 <Card.Body>
-                  <p><strong>Store:</strong> {order.order.restaurantName}</p>
-                  <p><strong>Order #:</strong> {order.id}</p>
-                  <p><strong>Date:</strong> {new Date(order.completed).toLocaleDateString()}</p> {/* Displaying date */}
-                  <p><strong>Time:</strong> {order.timeOfDelivery}</p> {/* Displaying time */}
+                  <p><strong>Order #:</strong> {delivery.id}</p>
+                  <p><strong>Date:</strong> {new Date(delivery.completed).toLocaleDateString()}</p> {/* Displaying date */}
+                  <p><strong>Time:</strong> {delivery.timeOfDelivery}</p> {/* Displaying time */}
                   <Button
                     variant="outline-primary"
-                    onClick={() => handleShowModal(order)}
+                    onClick={() => handleShowModal(delivery)}
                   >
                     Track Order
                   </Button>
@@ -113,7 +111,6 @@ const OrderHistorySection = ({customer }) => {
             <Modal.Title>Track Order #{selectedOrder.id}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h5>Store: {selectedOrder.order.restaurantName}</h5>
             <p>Status: {selectedOrder.status}</p>
             <p><strong>Date:</strong> {new Date(selectedOrder.completed).toLocaleDateString()}</p> {/* Displaying date */}
             <p><strong>Time:</strong> {selectedOrder.timeOfDelivery}</p> {/* Displaying time */}
