@@ -1,6 +1,10 @@
 /* OrderHistorySection.css */
 
+.order-image{
+  width: 100%;
 
+  height: 270px;
+}
 
 .order-history-section h2 {
   text-align: center;

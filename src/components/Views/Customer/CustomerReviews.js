@@ -9,6 +9,7 @@ import QR from '../../../images/QR.png';
 import RestaurantDetails from "./RestaurantDetails";
 import FAQ from './FAQ';
 
+
 // Mapping numeric ratings to enum values
 const ratingValues = {
   0: 'ZERO',

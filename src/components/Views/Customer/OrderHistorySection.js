@@ -6,6 +6,8 @@ import './CustomerCss/OrderHistorySection.css'; // Import the CSS file
 //import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; 
 import RestaurantDetails from './RestaurantDetails';
+import order1 from '../../../images/order1.png'
+import order2 from '../../../images/order2.png'
 
 const OrderHistorySection = ({customer }) => {
   const [showModal, setShowModal] = useState(false);
@@ -55,8 +57,9 @@ const OrderHistorySection = ({customer }) => {
 
   return (
     <div className="order-history-section">
+            <img src={order1} alt="order- header" className="order-image" />
+
       
-      <h2>Your Orders</h2>
       <div className="orders-container">
         {deliveries
           .filter(order => order.isDelivered) 
@@ -79,7 +82,7 @@ const OrderHistorySection = ({customer }) => {
       </div>
 
       {/* Delivery Status Section */}
-      <h2>Delivery Status</h2>
+      <img src={order2} alt="order- header" className="order-image" />
       <Row className="delivery-status-container">
         {deliveries
           .filter(order => !order.isDelivered) // Filter for ongoing deliveries
