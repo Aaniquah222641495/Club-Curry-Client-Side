@@ -6,6 +6,7 @@ import ReviewSection from './ReviewSection'; // Import the new component
 import '../../../CSS/HomePage.css';
 import chef from '../../../images/chefs.jpg';
 import food from '../../../images/food.jpg';
+import FAQ from './FAQ';
 
 const sampleMenuItems = [
   { id: 1, name: 'Chicken Curry' },
@@ -65,6 +66,8 @@ function HomePage({ setShowBooking, showBooking }) {
     </ul>
   </div>
 </div>
+
+<FAQ/>
 
 {/* Restaurant Details Section */}
 <div className="restaurant-details-section">

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Row, Col, Button, Modal, ProgressBar } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import './CustomerCss/OrderHistorySection.css'; // Import the CSS file
 //import CustomerDashboardHeader from './CustomerDashboardHeader';
 //import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; 
 import RestaurantDetails from './RestaurantDetails';
 
-const OrderHistorySection = ({ decodedValue }) => {
+const OrderHistorySection = ({customer }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [deliveries, setDeliveries] = useState([]);
@@ -16,17 +17,17 @@ const OrderHistorySection = ({ decodedValue }) => {
     // Fetch deliveries for the specific customer
     const fetchDeliveries = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/ClubCurry/delivery/getByCustomerEmail/${decodedValue.email}`);
+        const response = await axios.get(`http://localhost:8080/ClubCurry/delivery/getByCustomerEmail/${customer.email}`);
         setDeliveries(response.data);
       } catch (error) {
         console.error('Error fetching deliveries:', error);
       }
     };
 
-    if (decodedValue?.email) {
+    if (customer?.email) {
       fetchDeliveries();
     }
-  }, [decodedValue]);
+  }, [customer]);
 
   // Handle Modal show/hide
   const handleShowModal = (order) => {
@@ -131,6 +132,11 @@ const OrderHistorySection = ({ decodedValue }) => {
       <RestaurantDetails />
     </div>
   );
+};
+
+OrderHistorySection.propTypes = {
+  customer: PropTypes.object.isRequired,
+
 };
 
 export default OrderHistorySection;
