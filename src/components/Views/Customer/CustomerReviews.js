@@ -6,6 +6,7 @@ import StarRating from '../../Common/StarRating';
 import '../Customer/CustomerCss/CustomerReviews.css';
 import review from '../../../images/review.png';
 import QR from '../../../images/QR.png';
+import RestaurantDetails from "./RestaurantDetails";
 
 // Mapping numeric ratings to enum values
 const ratingValues = {
@@ -126,15 +127,15 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
                   </div>
                   <div className="review-body">
                     <div className="rating-item">
-                      <p><strong>Food Rating:</strong> {review.rating.foodQuality}/5</p>
+                      <p><strong>Food Rating:</strong> {review.rating.foodQuality}</p>
                       <StarRating rating={review.rating.foodQuality} readOnly />
                     </div>
                     <div className="rating-item">
-                      <p><strong>Service Rating:</strong> {review.rating.serviceQuality}/5</p>
+                      <p><strong>Service Rating:</strong> {review.rating.serviceQuality}</p>
                       <StarRating rating={review.rating.serviceQuality} readOnly />
                     </div>
                     <div className="rating-item">
-                      <p><strong>Atmosphere Rating:</strong> {review.rating.atmosphereQuality}/5</p>
+                      <p><strong>Atmosphere Rating:</strong> {review.rating.atmosphereQuality}</p>
                       <StarRating rating={review.rating.atmosphereQuality} readOnly />
                     </div>
                     <div className="rating-item">
@@ -199,6 +200,7 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
           </Form>
         </Modal.Body>
       </Modal>
+      <RestaurantDetails />
     </div>
   );
 };
