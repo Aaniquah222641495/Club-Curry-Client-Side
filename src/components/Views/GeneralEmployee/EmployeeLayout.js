@@ -7,6 +7,7 @@ import axios from 'axios';
 import Employee from "./Employee";
 import OrderManagement from "./OrderManagement";
 import BookingTest from "../../Common/BookingTest";
+import DeliveryForm from "./DeliveryForm";
 
 const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
   const [orderSummary, setOrderSummary] = useState([]);
@@ -17,6 +18,7 @@ const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
   const [employee, setEmployee] = useState({});
   const [collectionType, setCollectionType] = useState("DINE_IN");
   const [paymentMethod, setPaymentMethod] = useState("CARD");
+  const [showDeliveryForm, setShowDeliveryForm] = useState(false);
 
   useEffect(() => {
     console.log("decoded value " + decodedValue);
@@ -160,8 +162,9 @@ const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
         </nav>
         <div className="employee-main-content">
           <Employee handleAddToOrder={handleAddToOrder} products={products} currentMenuId={currentMenuId}/>
-          <OrderSummary onSubmitOrder={onSubmitOrder} orderSummary={orderSummary}
+          <OrderSummary onSubmitOrder={() => (collectionType === "DELIVERY" ? setShowDeliveryForm(true) : setShowDeliveryForm(false))} orderSummary={orderSummary}
                         handleRemoveFromOrder={handleRemoveFromOrder} handlePaymentChange={handlePaymentChange} handleCollectionChange={handleCollectionChange}/>
+          {showDeliveryForm && <DeliveryForm order={orderSummary} onSubmitOrder={onSubmitOrder} setShow={setShowDeliveryForm}/>}
         </div>
       </div>
       }
