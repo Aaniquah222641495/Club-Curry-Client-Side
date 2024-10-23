@@ -9,7 +9,7 @@
     border-right: 1px solid #dedede; /* Border on the right side of the navbar */
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    margin-right: 100%;
+  
 }
 
 /* Style for the button container */
@@ -47,29 +47,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Customer profile section */
-.customer-profile {
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto; /* Pushes the profile to the bottom */
-    border-top: 1px solid #ccc;
-}
 
-.profile-picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-}
 
-.customer-name {
-    font-size: 1rem;
-    font-weight: bold;
-    color: black; /* Black name color to match navbar */
-}
 
 /* Style the dashboard content */
 .dashboard-content {
    /* Prevent overlap with navbar */
-   margin-left: 300px;
+   margin-left: 18%;
+
+  
 }

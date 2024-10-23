@@ -1,14 +1,9 @@
 /* OrderHistorySection.css */
 
-.order-history-section {
-  padding: 20px;
-  width: 1200px;
-  margin-left: -57px;
-  margin-right: 0px;
-}
+
 
 .order-history-section h2 {
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
   font-family: 'Chonburi', sans-serif; /* Use a cohesive font */
   font-size: 2.5rem; /* Adjust size for prominence */

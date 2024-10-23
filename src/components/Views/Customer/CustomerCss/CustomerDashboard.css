@@ -4,9 +4,8 @@
     font-family: 'Arial', sans-serif;
     background-color: #ebebed; /* Light background color similar to screenshot */
     min-height: 100vh; /* Ensure it takes the full height of the screen */
-    width: 1200px;
     margin-bottom: 50px;
-    margin-left: -50px;
+   
   }
   
   /* Welcome Section */

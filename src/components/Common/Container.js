@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const CustomContainer = ({ children }) => {
   return (
-    <Container>
+    <Container bsPrefix='app-container' fluid= {true}>
       <Row>
         <Col>
           {children}
