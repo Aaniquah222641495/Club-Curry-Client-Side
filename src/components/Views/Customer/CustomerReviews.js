@@ -112,7 +112,7 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
       <img src={review} alt="review header" className="review-image" />
 
       <div className="reviews-container">
-        <h3>Your Reviews</h3>
+       <strong><h3>YOUR REVIEWS</h3></strong> 
         {existingReviews.length === 0 ? (
           <p>No reviews found. Click below to make a review.</p>
         ) : (
@@ -163,9 +163,12 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
 
       <div className="feedback-section">
         <div className="feedback-text">
-          <h3>Thank you for being part of our family!</h3>
-          <p>As a token of appreciation, every reviewer will receive a <strong>10% discount</strong> on their next visit. Don't forget to ask us about it!</p>
-          <Button variant="primary" onClick={handleOpenModal} className="add-review-button">
+        <h3>Thank you for being part of our family!</h3>
+<p>Your continued support means the world to us, and we are truly grateful for your loyalty. As a token of our appreciation, every reviewer will receive a <strong>10% discount</strong> on their next visit.</p>
+<p>Whether it's for a quick bite or a special occasion, we can't wait to serve you again. Don't forget to ask us about the discount when you're here, and show your review to redeem it!</p>
+<p>We hope to continue delighting you with every meal and experience. Thank you for being an essential part of the <strong>ClubCurry</strong> community!</p>
+
+          <Button  onClick={handleOpenModal} className="add-review-button">
             Add Review
           </Button>
         </div>

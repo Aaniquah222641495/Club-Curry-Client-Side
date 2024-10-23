@@ -23,7 +23,7 @@ function HomePage({ setShowBooking, showBooking }) {
       <div className="about-section">
         <h1 className="display-7 mb-4 typewriter-title">CLUB CURRY</h1>
         <h2 className="lead mb-4 fade-in-text">
-          <b>A Symphony of Authentic Indian Flavors</b>
+         A symphony of authentic indian flavors
         </h2>
         
         <Button variant="danger" as={Link} to="/menu" className="buttonmen fade-in-text">

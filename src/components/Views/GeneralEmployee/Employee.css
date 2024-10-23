@@ -1,8 +1,8 @@
 /* Style the side-nav container */
 .side-nav {
-    margin-left: -20%;
-    width: 20%;
-    background-color: #fff;
+    
+    width: 17%;
+    background-color: #ffffff;
     padding: 20px;
     position: fixed;
     height: 100vh;
@@ -10,6 +10,11 @@
     border-right: 1px solid #dedede; /* Border on the right side of the side-nav */
     display: flex;
     flex-direction: column; /* Stack items vertically */
+    
+}
+
+.employee-main-content{
+    margin-left:18% ;
 }
 
 /* Remove default list styling */
@@ -30,10 +35,10 @@
     background: none; /* No background color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add subtle shadow for shading effect */
     margin-bottom: 20px; /* Space between items */
-    margin-top: 20px;
-    width: 80%; /* Span full width of the side-nav */
+    width: 90%; /* Span full width of the side-nav */
     text-align: center; /* Center align text */
     transition: background-color 0.2s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    margin-left: 10px;
 }
 
 /* Hover effect for side-nav links */
@@ -53,8 +58,8 @@
 .employee-container {
     display: flex; /* Use Flexbox for layout */
     padding: 20px;
-    margin-left: 10%; /* Leave space for the side navigation */
-    width: 70%; /* Adjust the width to accommodate the sidebar */
+    margin-left: -20px;
+    width: 100%; /* Adjust the width to accommodate the sidebar */
 }
 
 .search-bar {

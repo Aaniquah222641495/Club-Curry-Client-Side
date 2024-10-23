@@ -33,14 +33,23 @@ const CustomerDashboard = ({
   return (
     <div className="customer-dashboard">
       <div className="welcome-section">
-        <h2>Welcome Back, {customer ? customer.name : "Guest"}!</h2>
-        <p>Discover our delicious menu and manage your orders with ease.</p>
-        <button onClick={handleViewMenu} className="view-menu-btn">
+      <h2>Namaste, {customer ? customer.name : "Guest"}!</h2>
+</div>     
+      <div div className="welcome-section-p">
+      <div></div>
+      <p>Step into a world of authentic Indian flavors! Discover our rich, aromatic dishes, and manage your orders with ease.</p>
+      <p>From savory curries to fragrant biryanis, let us take your taste buds on an unforgettable journey. </p>
+      <p>We’re excited to serve you once again!</p>
+      <button onClick={handleViewMenu} className="view-menu-btn">
           View Menu
         </button>
         {/* Conditionally render the Menu component */}
         {showMenu && <Menu addToCart={addToCart} />}
       </div>
+
+        
+
+        
 
       <Cart
         cartItems={cartItems}
