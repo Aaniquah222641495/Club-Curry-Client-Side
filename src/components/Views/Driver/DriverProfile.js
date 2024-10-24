@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTag, faUser, faIdCard, faCar, faGasPump } from '@fortawesome/free-solid-svg-icons';
 import '../Driver/DriverCSS/DriverProfile.css'; // Make sure your CSS matches the new design
 import driverImage from '../../../images/driver.png'
+import axios from "axios";
 
-const DriverProfile = () => {
+const DriverProfile = (props) => {
   const [driver, setDriver] = useState({
-    name: 'John',
-    surname: 'Doe',
-    vehicleRegistrationNumber: 'ABC1234',
-    petrolAllowance: 150,
-    username: 'johndoe',
+    name: props.user?.name || '',
+    surname: props.user?.surname || '' ,
+    registration: props.user?.registration|| {},
+    petrolAllowance: props.user?.petrolAllowance || '',
+    username: props.user?.username || '',
     profilePhoto: driverImage // Placeholder image URL
   });
+
+
+
 
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(driver.name);
@@ -28,6 +32,16 @@ const DriverProfile = () => {
       name,
       surname,
     }));
+    const saveDriver = async () =>{
+      try{
+        await axios.put("http://localhost:8080/ClubCurry/driver/update", driver)
+      }
+      catch (error){
+        console.log('error ovvured while editing driver profile' + error);
+
+      }
+    }
+    saveDriver();
     setEditing(false);
   };
 
@@ -70,7 +84,7 @@ const DriverProfile = () => {
             <input
               type="text"
               id="vehicleRegistrationNumber"
-              value={driver.vehicleRegistrationNumber}
+              value={driver.registration.id}
               readOnly
             />
           </div>
@@ -82,11 +96,6 @@ const DriverProfile = () => {
           </div>
         </div>
       </div>
-      {editing ? (
-        <button onClick={handleSave} className="save-button">Save</button>
-      ) : (
-        <button onClick={handleEdit} className="edit-button">Edit</button>
-      )}
     </div>
   );
 };
