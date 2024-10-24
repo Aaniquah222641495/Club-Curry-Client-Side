@@ -14,6 +14,7 @@ const DriverDashboardContainer = ({ onLogout, decodedValue }) => {
   const [deliveries, setDeliveries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSection, setActiveSection] = useState('active-deliveries'); // Track the active section
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,6 +23,7 @@ const DriverDashboardContainer = ({ onLogout, decodedValue }) => {
         const userResponse = await fetch(`http://localhost:8080/ClubCurry/driver/readByUsername/${decodedValue.sub}`);
         // console.log(userResponse.data)
         const userData = await userResponse.json();
+        setUser(userData);
         
         // Assuming userData contains an id property for the user
         const userId = userData.id;
@@ -95,7 +97,7 @@ const DriverDashboardContainer = ({ onLogout, decodedValue }) => {
               />
             )}
             {activeSection === 'deliveries' && <Deliveries deliveries={deliveries} />}
-            {activeSection === 'profile' && <DriverProfile />}
+            {activeSection === 'profile' && <DriverProfile decodedValue={decodedValue} user={user}/>}
             {activeSection === 'performance-overview' && (
               <div className="performance-overview">
                 <h2 className="overview-title">Performance Overview</h2>

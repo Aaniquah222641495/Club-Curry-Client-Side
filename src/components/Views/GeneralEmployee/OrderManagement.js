@@ -90,6 +90,22 @@ const OrderManagement = () => {
     updateStatus();
   };
 
+  const handleDriverChange= (order, driver) => {
+    const updateDriver = async () =>{
+      try {
+        const response = await axios.get(`http://localhost:8080/ClubCurry/delivery/getByOrderId/${order.id}`);
+        const delivery = response.data;
+
+        const updatedDelivery= {...delivery, driver: {id: driver}};
+        await axios.put("http://localhost:8080/ClubCurry/delivery/update", updatedDelivery)
+      }
+      catch (error){
+        console.log("Error occured while changing driver " + error);
+      }
+      }
+    updateDriver();
+  }
+
   const handleViewDetails = (order) => {
     setSelectedOrder(order); // Set the selected order to be viewed in modal
   };
@@ -105,6 +121,8 @@ const OrderManagement = () => {
       return ['PENDING', 'PREPARING', 'CANCELLED', 'COMPLETED'];
     }
   };
+
+
 
   const filteredOrders = orders.filter(order =>
     order.id.toString().includes(searchQuery) ||
@@ -200,12 +218,12 @@ const OrderManagement = () => {
                   <td>
                     <select
                         value={order}
-                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                        onChange={(e) => handleDriverChange(order, e.target.value)}
                         disabled={order.status === 'Cancelled'}
                     >
-                      {getStatusOptions(order.collectionType).map((statusOption) => (
-                          <option key={statusOption} value={statusOption}>
-                            {statusOption}
+                      {drivers.map((driver) => (
+                          <option key={driver.id} value={driver.id}>
+                            {driver.name}
                           </option>
                       ))}
                     </select>
