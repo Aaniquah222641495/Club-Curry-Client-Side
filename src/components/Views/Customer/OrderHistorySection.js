@@ -6,8 +6,8 @@ import './CustomerCss/OrderHistorySection.css'; // Import the CSS file
 //import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios'; 
 import RestaurantDetails from './RestaurantDetails';
-import order1 from '../../../images/order1.png'
-import order2 from '../../../images/order2.png'
+import order1 from '../../../images/order1.svg'
+import order2 from '../../../images/order2.svg'
 
 const OrderHistorySection = ({customer}) => {
   const [showModal, setShowModal] = useState(false);

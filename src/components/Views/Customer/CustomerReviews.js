@@ -4,10 +4,11 @@ import { Modal, Button, Form, Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import StarRating from '../../Common/StarRating';
 import '../Customer/CustomerCss/CustomerReviews.css';
-import review from '../../../images/review.png';
+import review from '../../../images/review.svg';
 import QR from '../../../images/QR.png';
 import RestaurantDetails from "./RestaurantDetails";
 import FAQ from './FAQ';
+import yReviews from '../../../images/yReviews.svg'
 
 
 // Mapping numeric ratings to enum values
@@ -112,8 +113,8 @@ const CustomerReviews = ({ onAddReview, onDeleteReview, customer }) => {
       <img src={review} alt="review header" className="review-image" />
 
       <div className="reviews-container">
-       <strong><h3>YOUR REVIEWS</h3></strong> 
-        {existingReviews.length === 0 ? (
+      <img src={yReviews} className="reviews-section-image" />
+      {existingReviews.length === 0 ? (
           <p>No reviews found. Click below to make a review.</p>
         ) : (
           <div className="reviews-slider">
