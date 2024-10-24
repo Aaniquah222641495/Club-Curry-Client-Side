@@ -18,7 +18,6 @@ const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
   const [employee, setEmployee] = useState({});
   const [collectionType, setCollectionType] = useState("DINE_IN");
   const [paymentMethod, setPaymentMethod] = useState("CARD");
-  const [showDeliveryForm, setShowDeliveryForm] = useState(false);
 
   useEffect(() => {
     console.log("decoded value " + decodedValue);
@@ -163,8 +162,9 @@ const EmployeeLayout = ({ isLoggedIn, onLogout, decodedValue }) => {
         <div className="employee-main-content">
           <Employee handleAddToOrder={handleAddToOrder} products={products} currentMenuId={currentMenuId}/>
           <OrderSummary onSubmitOrder={onSubmitOrder} orderSummary={orderSummary}
-                        handleRemoveFromOrder={handleRemoveFromOrder} handlePaymentChange={handlePaymentChange} handleCollectionChange={handleCollectionChange}/>
-          {showDeliveryForm && <DeliveryForm order={orderSummary} onSubmitOrder={onSubmitOrder} setShow={setShowDeliveryForm}/>}
+                        handleRemoveFromOrder={handleRemoveFromOrder} handlePaymentChange={handlePaymentChange} handleCollectionChange={handleCollectionChange}
+                        collectionType={collectionType} setCollectionType={setCollectionType}
+          />
         </div>
       </div>
       }

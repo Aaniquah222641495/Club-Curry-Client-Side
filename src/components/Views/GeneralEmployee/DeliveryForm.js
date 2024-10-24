@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
+import axios from "axios";
 
 const DeliveryForm = ({ order, onSubmitOrder, setShow, show }) => {
     const [deliveryData, setDeliveryData] = useState({
@@ -50,6 +51,15 @@ const DeliveryForm = ({ order, onSubmitOrder, setShow, show }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(deliveryData);
+        const submitDelivery = async () => {
+            try {
+                await axios.post("http://localhost:8080/ClubCurry/delivery/save", deliveryData);
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+        submitDelivery();
         onSubmitOrder(); // Call the parent submit handler
         handleClose(); // Close the modal after submitting
     };
@@ -63,15 +73,6 @@ const DeliveryForm = ({ order, onSubmitOrder, setShow, show }) => {
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col md={6}>
-                            <Form.Group controlId="formOrderId">
-                                <Form.Label>Order ID</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="orderId"
-                                    value={deliveryData.order.id} // Prefilled order ID
-                                    readOnly={true} // Order ID is read-only
-                                />
-                            </Form.Group>
 
                             <Form.Group controlId="formStreetName">
                                 <Form.Label>Street Name</Form.Label>
@@ -124,22 +125,6 @@ const DeliveryForm = ({ order, onSubmitOrder, setShow, show }) => {
                                     name="postalCode"
                                     value={deliveryData.address.suburb.postalCode}
                                     onChange={(e) => handleNestedChange(e, 'address', 'suburb')}
-                                />
-                            </Form.Group>
-
-                            <Form.Group controlId="formCustomerEmail">
-                                <Form.Label>Customer Email</Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    name="email"
-                                    value={deliveryData.customerId.email}
-                                    onChange={(e) => setDeliveryData({
-                                        ...deliveryData,
-                                        customerId: {
-                                            ...deliveryData.customerId,
-                                            email: e.target.value
-                                        }
-                                    })}
                                 />
                             </Form.Group>
                         </Col>
