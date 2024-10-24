@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../Driver/DriverCSS/ActiveDeliveries.css'; // Make sure you have this CSS file for styling
-
 const ActiveDeliveries = ({ deliveries = [], onUpdateStatus }) => {
   // Filter only deliveries that are in transit
   const inTransitDeliveries = deliveries;
 
   return (
     <div className="active-deliveries-container">
-      <h2>Orders In Transit</h2>
-      <div className="active-deliveries-card-grid">
+            <div className="active-deliveries-card-grid">
+
         {inTransitDeliveries.length === 0 ? (
           <p>No active deliveries</p>
         ) : (

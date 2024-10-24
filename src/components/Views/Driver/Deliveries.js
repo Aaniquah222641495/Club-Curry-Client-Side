@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import '../Driver/DriverCSS/Deliveries.css';
+import PendingDeliveries from '../../../images/PendingDeliveries.svg';
 
 const Deliveries = ({ deliveries = [], onUpdateStatus }) => {
   // Filter only pending deliveries
@@ -11,38 +10,21 @@ const Deliveries = ({ deliveries = [], onUpdateStatus }) => {
   // Calculate total deliveries and percentage (for demo purposes, using static values)
   const totalPendingDeliveries = pendingDeliveries.length;
   const previousTotalDeliveries = 100; // Example previous value for total deliveries
-  const percentagePending = ((totalPendingDeliveries / previousTotalDeliveries) * 100) || 0;
   const percentageIncrease = ((totalPendingDeliveries - previousTotalDeliveries) / previousTotalDeliveries) * 100;
-
 
   return (
     <div className="deliveries-container">
       <div className="deliveries-summary"></div>
-      <h2>Pending Deliveries</h2>
+      <img src={PendingDeliveries} className="p-table-image" />
       <div className="total-pending-deliveries">
         <h4>Total Pending Deliveries</h4>
         <h1>{totalPendingDeliveries}</h1>
         
         <p className="percentage-change" style={{ color: percentageIncrease > 0 ? 'green' : 'red' }}>
-            {percentageIncrease > 0 ? '▲' : '▼'} {Math.abs(percentageIncrease).toFixed(2)}%
-          </p>
-          
-          
-        <div className="progress-circle">
-          <CircularProgressbar
-            value={percentagePending}
-            text={`${Math.round(percentagePending)}%`}
-            styles={buildStyles({
-              pathColor: '#FF9800', // Customize color for the progress bar
-              textColor: '#333',
-              trailColor: '#e0e0e0',
-            })}
-          />
-        </div>
+          {percentageIncrease > 0 ? '▲' : '▼'} {Math.abs(percentageIncrease).toFixed(2)}%
+        </p>
       </div>
 
-     
-     
       <table className="table table-striped">
         <thead>
           <tr>
