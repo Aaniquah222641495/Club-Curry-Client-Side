@@ -1,8 +1,6 @@
 import React from 'react';
 import './DriverCSS/CompletedDeliveries.css';
-
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import cDeliveries from '../../../images/cDeliveries.svg';
 
 const CompletedDeliveries = () => {
   // Dummy data for completed deliveries
@@ -80,7 +78,7 @@ const CompletedDeliveries = () => {
   return (
     <div className="completed-deliveries-container">
       <div className="deliveries-summary">
-      <h2>Completed Deliveries</h2>
+        <img src={cDeliveries} className="c-table-image" />
         <div className="total-deliveries">
           <h4>Total Deliveries</h4>
           <h1>{totalDeliveries}</h1>
@@ -88,22 +86,8 @@ const CompletedDeliveries = () => {
             {percentageIncrease > 0 ? '▲' : '▼'} {Math.abs(percentageIncrease).toFixed(2)}%
           </p>
         </div>
-        <div className="progress-circle">
-          <CircularProgressbar
-            value={Math.abs(percentageIncrease)}
-            text={`${Math.abs(percentageIncrease).toFixed(1)}%`}
-            styles={buildStyles({
-              pathColor: percentageIncrease > 0 ? '#4CAF50' : '#f44336',
-              textColor: '#333',
-              trailColor: '#e0e0e0',
-              backgroundColor: '#f0f0f0',
-            })}
-          />
-        </div>
       </div>
 
-     
-   
       <div className="deliveries-grid">
         {completedDeliveries.map(delivery => (
           <div key={delivery.deliveryId} className="delivery-card">
